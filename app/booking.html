@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>cal.diy — Reservar cita (demo)</title>
+  <style>
+    body { font-family: sans-serif; max-width: 460px; margin: 3rem auto; }
+    h1 { color: #111827; }
+    .marca { color: #6366f1; }
+    input, button { padding: .5rem; margin: .3rem 0; }
+    button { cursor: pointer; background: #6366f1; color: #fff; border: 0; border-radius: 6px; }
+    #error { color: #b00020; }
+    #mensaje { color: #16653f; font-weight: bold; }
+    li { margin: .2rem 0; }
+  </style>
+</head>
+<body>
+  <!-- Demo LOCAL del flujo de agendamiento (booking) de cal.diy: un visitante
+       reserva una cita en un event-type. Se abre directamente (en la app real
+       se llega tras elegir un enlace público de agenda). -->
+  <h1 id="titulo-booking"><span class="marca">cal</span>.diy — Reservar cita</h1>
+
+  <form id="form-cita" onsubmit="return false;">
+    <input id="nombre" placeholder="Tu nombre">
+    <input id="fecha" placeholder="AAAA-MM-DD">
+    <button id="btn-reservar" onclick="reservar()">Reservar</button>
+  </form>
+
+  <p id="error" style="display:none;"></p>
+  <p id="mensaje" style="display:none;"></p>
+  <ul id="lista-citas"></ul>
+
+  <script>
+    function reservar() {
+      const nombre = document.getElementById("nombre").value.trim();
+      const fecha = document.getElementById("fecha").value.trim();
+      const error = document.getElementById("error");
+      const mensaje = document.getElementById("mensaje");
+      error.style.display = "none";
+      mensaje.style.display = "none";
+
+      // Retardo deliberado (~500 ms): obliga a usar esperas explícitas.
+      setTimeout(() => {
+        let msg = null;
+        if (!nombre)      msg = "El nombre es obligatorio";
+        else if (!fecha)  msg = "La fecha es obligatoria";
+        else if (!/^\d{4}-\d{2}-\d{2}$/.test(fecha))
+                          msg = "Formato de fecha invalido";
+        else if (fecha < "2026-01-01")
+                          msg = "La fecha esta en el pasado";
+
+        if (msg) {
+          error.textContent = msg;
+          error.style.display = "block";
+          return;
+        }
+
+        const li = document.createElement("li");
+        li.textContent = nombre + " — " + fecha;
+        document.getElementById("lista-citas").appendChild(li);
+        mensaje.textContent = "Cita reservada para " + fecha;
+        mensaje.style.display = "block";
+      }, 500);
+    }
+  </script>
+</body>
+</html>

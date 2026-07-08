@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>cal.diy — Inicio de sesión (demo)</title>
+  <style>
+    body { font-family: sans-serif; max-width: 420px; margin: 3rem auto; }
+    h1 { color: #111827; }
+    .marca { color: #6366f1; }
+    input { display: block; width: 100%; padding: .5rem; margin: .4rem 0; box-sizing: border-box; }
+    button { padding: .5rem 1rem; cursor: pointer; background: #6366f1; color: #fff; border: 0; border-radius: 6px; }
+    #error { color: #b00020; }
+    #saludo { color: #16653f; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <h1><span class="marca">cal</span>.diy — Iniciar sesión</h1>
+
+  <!-- Demo LOCAL que reproduce el flujo de login de cal.diy (NextAuth).
+       Los IDs (email, password, btn-login, saludo, error) son los que
+       buscan los Page Objects de Selenium. No requiere servidor ni internet. -->
+  <form id="form-login" onsubmit="return false;">
+    <input id="email" placeholder="Correo (ej. admin@example.com)">
+    <input id="password" type="password" placeholder="Contraseña">
+    <button id="btn-login" onclick="entrar()">Entrar</button>
+  </form>
+
+  <p id="error" style="display:none;"></p>
+  <p id="saludo" style="display:none;"></p>
+
+  <script>
+    // Credenciales de prueba equivalentes a las que documenta cal.diy.
+    const VALID_USER = "admin@example.com";
+    const VALID_PASS = "Cal1234!";
+
+    function entrar() {
+      const u = document.getElementById("email").value;
+      const c = document.getElementById("password").value;
+      const error = document.getElementById("error");
+      const saludo = document.getElementById("saludo");
+      error.style.display = "none";
+      saludo.style.display = "none";
+
+      // Retardo deliberado (~600 ms) que simula la petición a NextAuth.
+      // Obliga a usar ESPERAS EXPLÍCITAS en las pruebas (WebDriverWait):
+      // con time.sleep serían flaky; con WebDriverWait son estables.
+      setTimeout(() => {
+        let msg = null;
+        if (!u)                    msg = "El correo es obligatorio";
+        else if (!c)               msg = "La contrasena es obligatoria";
+        else if (u !== VALID_USER) msg = "Usuario no existe";
+        else if (c !== VALID_PASS) msg = "Contrasena incorrecta";
+
+        if (msg) {
+          error.textContent = msg;
+          error.style.display = "block";
+        } else {
+          saludo.textContent = "Bienvenido, admin";
+          saludo.style.display = "block";
+        }
+      }, 600);
+    }
+  </script>
+</body>
+</html>
