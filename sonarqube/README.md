@@ -1,7 +1,7 @@
 # SonarQube — análisis del proyecto de pruebas cal.diy (Parte B)
 
-Materiales para **levantar SonarQube y analizar** el proyecto `practica2_caldiy/`,
-donde está `sonar-project.properties` y el código a analizar (`pages/`, `tests/`).
+Materiales para **levantar SonarQube y analizar** el proyecto (raíz del repositorio),
+donde está `sonar-project.properties` y el código a analizar (`pages/`, `packages/lib/`).
 
 ## Requisitos
 
@@ -19,7 +19,7 @@ donde está `sonar-project.properties` y el código a analizar (`pages/`, `tests
 ## Flujo en clase (Windows / PowerShell)
 
 ### 0. (Antes) Generar la cobertura
-Desde la raíz del proyecto (`practica2_caldiy/`), con el entorno activado:
+Desde la raíz del repositorio, con el entorno activado:
 ```powershell
 pytest --cov=pages --cov-report=xml --html=reporte.html --self-contained-html
 ```

@@ -22,7 +22,7 @@ agendamiento open-source) aplicando **Selenium (E2E)** y **SonarQube
 ## Estructura
 
 ```
-practica2_caldiy/
+(raíz del repositorio)
   app/
     login.html              # demo: login de cal.diy (validación asíncrona)
     booking.html            # demo: reservar cita (validación asíncrona)
@@ -55,7 +55,7 @@ practica2_caldiy/
 ## Instalación
 
 ```powershell
-cd practica2_caldiy
+# desde la raíz del repositorio
 python -m venv .venv
 .venv\Scripts\activate          # Windows
 # source .venv/bin/activate     # Linux/Mac

@@ -5,9 +5,6 @@ jobs:
     runs-on: ubuntu-latest
     env:
       HEADLESS: "1"          # Chrome sin ventana (servidor sin pantalla)
-    defaults:
-      run:
-        working-directory: practica2_caldiy
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -20,5 +17,5 @@ jobs:
         with:
           name: evidencias
           path: |
-            practica2_caldiy/reporte.html
-            practica2_caldiy/coverage.xml
+            reporte.html
+            coverage.xml
