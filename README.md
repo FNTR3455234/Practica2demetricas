@@ -219,8 +219,10 @@ PDF con **capturas numeradas**. Checklist sugerido:
 
 | Integrante | Matrícula | Aportes |
 |---|---|---|
-| _(nombre)_ | _(matrícula)_ | _(p. ej. Page Objects y pruebas de login)_ |
-| _(nombre)_ | _(matrícula)_ | _(p. ej. SonarQube, cobertura y correcciones)_ |
+| _Felipe Antonio Rodríguez Díaz_ | _up240423_ | _Desarrollo del código junto con el repo._ |
+| _Ángel Germán Correa Benítez_ | _up240077_ | _Documento y corregir issues._ |
+| _Samuel Guadalupe Reyes García_ | _up240516_ | _Correr los comandos y hacer el video._ |
+| _Erick Luna Espinosa_ | _up240801_ | _Hacer el video y tomar las capturas de pantalla._ |
 
 ### Breve análisis de la deuda técnica
 _(2–3 líneas: qué issues encontró Sonar, cuáles se corrigieron, qué deuda
