@@ -27,7 +27,7 @@ class BookingPage:
         self.driver.get(self.url)
         return self
 
-    def titulo(self):
+    def obtener_titulo(self):
         return self.wait.until(
             EC.visibility_of_element_located(self.TITULO)).text
 

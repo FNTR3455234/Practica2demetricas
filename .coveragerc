@@ -1,0 +1,6 @@
+[run]
+# Escribe las rutas de archivos como relativas (no absolutas de Windows) en
+# coverage.xml, para que el scanner de SonarQube (que corre dentro de un
+# contenedor Docker con el repo montado en /usr/src) pueda casarlas con
+# sonar.sources=pages y calcular el % de Coverage correctamente.
+relative_files = True

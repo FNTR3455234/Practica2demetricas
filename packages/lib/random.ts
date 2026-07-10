@@ -4,14 +4,14 @@
 const CHARACTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
 const CHARACTERS_LENGTH = CHARACTERS.length;
 
-/**
- * Generate a random string of a given length using alphanumeric characters.
- */
-export const randomString = function (length = 12) {
-  let result = "";
 
+export const randomString = function (length = 12) {
+  const bytes = new Uint32Array(length);
+  crypto.getRandomValues(bytes);
+
+  let result = "";
   for (let i = 0; i < length; i++) {
-    result += CHARACTERS.charAt(Math.floor(Math.random() * CHARACTERS_LENGTH));
+    result += CHARACTERS.charAt(bytes[i] % CHARACTERS_LENGTH);
   }
 
   return result;
